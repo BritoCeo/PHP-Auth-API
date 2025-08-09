@@ -5,7 +5,7 @@
         private $db_host = 'localhost';
         private $db_name = 'php.auth.api';
         private $db_username = 'root';
-        private $db_password = 'Mysql344$';
+        private $db_password = '******';
 
         public function dbConnection() {
 
