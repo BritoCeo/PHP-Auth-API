@@ -66,14 +66,14 @@
         else {
             try {
 
-                $check_email = "SELECT `email` FROM `users` WHERE 'email =:email'";
+                $check_email = "SELECT `email` FROM `users` WHERE `email` =:email";
                 $check_email_stmt = $conn->prepare($check_email);
                 $check_email_stmt->bindValue(':email', $email, PDO::PARAM_STR);
                 $check_email_stmt->execute();
 
                 if ($check_email_stmt->rowCount()) {
                     
-                    $returnData = message(0, 422, 'This E-mail is already exist !');
+                    $returnData = message(0, 422, 'This e-mail already exist ! Please use a different e-mail !');
 
                 } else {
                     
@@ -88,7 +88,7 @@
 
                     $insert_stmt->execute();
                     
-                    $returnData = message(1, 200, 'You have succesfully registered.');
+                    $returnData = message(1, 201, 'You have succesfully registered.');
                 }                           
                 
             } catch (PDOException $e) {
