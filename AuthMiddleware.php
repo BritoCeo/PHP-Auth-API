@@ -51,21 +51,24 @@ class Auth extends JwtHandler {
 
         try {
 
-            $fetch_user_by_id = "SELECT name, email FROM users WHERE id =: id";
+            $fetch_user_by_id = "SELECT `name`, `email` FROM `users` WHERE `id` = :id";
             $query_stmt = $this->db->prepare($fetch_user_by_id);
             $query_stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
-            $query_stmt->excute();
+            $query_stmt->execute();
 
             if ($query_stmt->rowCount()) {
+
                 return $query_stmt->fetch(PDO::FETCH_ASSOC);
+
             } else {
+                
                 return false;
             }
             
         } catch (PDOException $e) {
 
             return [
-                "User not found, enter valid id"=> $e->getMessage()
+                "message user"=> $e->getMessage()
             ];
         }
 
