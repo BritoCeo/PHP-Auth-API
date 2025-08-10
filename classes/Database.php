@@ -5,7 +5,7 @@
         private $db_host = 'localhost';
         private $db_name = 'php.auth.api';
         private $db_username = 'root';
-        private $db_password = '******';
+        private $db_password = 'Mysql344$';
 
         public function dbConnection() {
 
@@ -17,6 +17,7 @@
                 $this->db_password);
 
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                return $conn;
 
             } catch (PDOException $e) {
                 
